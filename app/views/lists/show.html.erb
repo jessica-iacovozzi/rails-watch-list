@@ -1,6 +1,8 @@
 <h1><%= @list.name %></h1>
-<% @movies.each do |movie| %>
-  <h3><%= movie[0].title %></h3>
+
+<% @bookmarks.each do |bookmark| %>
+  <h3><%= bookmark.movie.title %></h3>
+  <h6><%= bookmark.comment %></h4>
 <% end %>
 
 <%= link_to 'Go back', lists_path %>
