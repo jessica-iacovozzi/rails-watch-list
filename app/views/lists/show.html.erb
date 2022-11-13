@@ -1,9 +1,20 @@
-<h1><%= @list.name %></h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @list.photo.key %>);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
 
 <% @bookmarks.each do |bookmark| %>
-  <h3><%= bookmark.movie.title %></h3>
-  <h6><%= bookmark.comment %></h4>
-  <%= link_to 'Delete bookmark', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <div class="card-product m-3 ">
+    <img src="<%= bookmark.movie.poster_url %>" />
+    <div class="card-product-infos">
+      <h2><%= bookmark.movie.title %></h2>
+      <p><%= bookmark.movie.overview %></p>
+      <p><%= bookmark.movie.rating %></p>
+      <p><%= bookmark.comment %></p>
+      <%= link_to 'Delete bookmark', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    </div>
+  </div>
 <% end %>
 
 <%= link_to 'Go back', root_path %>
